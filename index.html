@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<title>REGEX UAbALL</title>
+<meta charset="UTF-8" />
+<meta name="description" content="UAbALL - Automata Learning Lab | Um Simulador para o Ensino." />
+<meta name="keywords" content="Automatos, gramaticas e Maquinas Touring" />
+<meta name="author" content="André Maciel Sousa" />
+<meta name="generator" content="Visual Studio Code" />
+
+
+<script type="text/javascript">
+
+    function myFunction(i) {
+        console.log(i)
+        var testStr = document.getElementById("str"+i).value;
+        //console.log(testStr);
+        var testRegex = eval(document.getElementById("reg"+i).value);
+        //console.log(testRegex);
+        var resultadoV = testRegex.test(testStr);
+        var resultadoE = testStr.match(testRegex);
+        document.getElementById("valida"+i).innerHTML = resultadoV;
+        document.getElementById("extrat"+i).innerHTML = resultadoE;
+    }
+
+</script>
+
+</head>
+
+<body>
+    <h3>Exemplo base</h3>
+    <form>
+        <p>String a testar : <input type="text" id="str1" value="James has a pet cat." size="50"/></p>
+        <p>Regex : <input type="text" id="reg1" value="/dog|cat|bird|fish/" size="50"/></p>
+        <p><input type="button" value="Test" onclick="myFunction(1)" /></p>
+    </form>
+    <p id="valida1"></p>
+    <p id="extrat1"></p>
+    <h3>Exemplo (ignore case) (i flag)</h3>
+    <form>
+        <p>String a testar : <input type="text" id="str2" value="James has a pet CAT." size="50"/></p>
+        <p>Regex : <input type="text" id="reg2" value="/dog|cat|bird|fish/i" size="50"/></p>
+        <p><input type="button" value="Test" onclick="myFunction(2)" /></p>
+    </form>
+    <p id="valida2"></p>
+    <p id="extrat2"></p>
+    <h3>Exemplo (global) (g flag)</h3>
+    <form>
+        <p>String a testar : <input type="text" id="str3" value="James has a pet cat, bird and dog." size="50"/></p>
+        <p>Regex : <input type="text" id="reg3" value="/dog|cat|bird|fish/g" size="50"/></p>
+        <p><input type="button" value="Test" onclick="myFunction(3)" /></p>
+    </form>
+    <p id="valida3"></p>
+    <p id="extrat3"></p>
+    <h3>Exemplo (multiline) (m flag)</h3>
+
+
+
+</body>
+
+</html>
