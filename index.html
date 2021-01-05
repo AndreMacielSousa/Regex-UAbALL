@@ -7,54 +7,91 @@
 <meta name="author" content="André Maciel Sousa" />
 <meta name="generator" content="Visual Studio Code" />
 
+<!-- CSS test to move to CSS External  -->
 
-<script type="text/javascript">
-
-    function myFunction(i) {
-        console.log(i)
-        var testStr = document.getElementById("str"+i).value;
-        //console.log(testStr);
-        var testRegex = eval(document.getElementById("reg"+i).value);
-        //console.log(testRegex);
-        var resultadoV = testRegex.test(testStr);
-        var resultadoE = testStr.match(testRegex);
-        document.getElementById("valida"+i).innerHTML = resultadoV;
-        document.getElementById("extrat"+i).innerHTML = resultadoE;
+<style>
+    body {
+        background-color: linen;
     }
 
-</script>
+    h2 {
+        color: maroon;
+    }
+
+    #regex {
+        margin-left: 60px;
+        font-family: sans-serif;
+        font-size: larger;
+    }
+
+    #testes {
+        font-size: smaller;
+    }
+</style>
+
+<script type="text/javascript" src="regex.js"> </script>
 
 </head>
 
 <body>
-    <h3>Exemplo base</h3>
-    <form>
-        <p>String a testar : <input type="text" id="str1" value="James has a pet cat." size="50"/></p>
-        <p>Regex : <input type="text" id="reg1" value="/dog|cat|bird|fish/" size="50"/></p>
-        <p><input type="button" value="Test" onclick="myFunction(1)" /></p>
-    </form>
-    <p id="valida1"></p>
-    <p id="extrat1"></p>
-    <h3>Exemplo (ignore case) (i flag)</h3>
-    <form>
-        <p>String a testar : <input type="text" id="str2" value="James has a pet CAT." size="50"/></p>
-        <p>Regex : <input type="text" id="reg2" value="/dog|cat|bird|fish/i" size="50"/></p>
-        <p><input type="button" value="Test" onclick="myFunction(2)" /></p>
-    </form>
-    <p id="valida2"></p>
-    <p id="extrat2"></p>
-    <h3>Exemplo (global) (g flag)</h3>
-    <form>
-        <p>String a testar : <input type="text" id="str3" value="James has a pet cat, bird and dog." size="50"/></p>
-        <p>Regex : <input type="text" id="reg3" value="/dog|cat|bird|fish/g" size="50"/></p>
-        <p><input type="button" value="Test" onclick="myFunction(3)" /></p>
-    </form>
-    <p id="valida3"></p>
-    <p id="extrat3"></p>
-    <h3>Exemplo (multiline) (m flag)</h3>
+    <div id="regex">
+        <h2>TESTES REGEX</h2>
+        <form>
+            <p>String</p>
+            <textarea id="str" rows="5" cols="64">James has a pet CAT, bird and dog.</textarea>
+            <p>Regex :<b> &sol; </b><input type="text" id="reg" value="dog|cat|bird|fish" size="50" /><b> &sol;</b></p>
+            <p>Flags:
+                <input type="checkbox" id="ignore" value="i"> ignore case (/i)
+                <input type="checkbox" id="global" value="g"> global (/g)
+                <!--
+                <input type="checkbox" id="multi" value="m"> multiline (/m)
+                -->
+            </p>
+            <p><input type="button" value="Test" onclick="regex()" /></p>
+        </form>
+        <p id="valida"></p>
+        <p id="extrat"></p>
+    </div>
 
-
-
+    <!-- Testes Gerais-->
+    <div id="testes">
+        <hr />
+        <hr />
+        <h4>Exemplo base</h4>
+        <form>
+            <p>String a testar : <input type="text" id="str1" value="James has a pet cat." size="50" /></p>
+            <p>Regex : <input type="text" id="reg1" value="/dog|cat|bird|fish/" size="50" /></p>
+            <p><input type="button" value="Test" onclick="myFunction(1)" /></p>
+        </form>
+        <p id="valida1"></p>
+        <p id="extrat1"></p>
+        <h4>Exemplo (ignore case) (i flag)</h4>
+        <form>
+            <p>String a testar : <input type="text" id="str2" value="James has a pet CAT." size="50" /></p>
+            <p>Regex : <input type="text" id="reg2" value="/dog|cat|bird|fish/i" size="50" /></p>
+            <p><input type="button" value="Test" onclick="myFunction(2)" /></p>
+        </form>
+        <p id="valida2"></p>
+        <p id="extrat2"></p>
+        <h4>Exemplo (global) (g flag)</h4>
+        <form>
+            <p>String a testar : <input type="text" id="str3" value="James has a pet cat, bird and dog." size="50" />
+            </p>
+            <p>Regex : <input type="text" id="reg3" value="/dog|cat|bird|fish/g" size="50" /></p>
+            <p><input type="button" value="Test" onclick="myFunction(3)" /></p>
+        </form>
+        <p id="valida3"></p>
+        <p id="extrat3"></p>
+        <h4>Exemplo (ignore case + global) (i+g flag)</h4>
+        <form>
+            <p>String a testar : <input type="text" id="str4" value="James has a pet CAT, bird and dog." size="50" />
+            </p>
+            <p>Regex : <input type="text" id="reg4" value="/dog|cat|bird|fish/ig" size="50" /></p>
+            <p><input type="button" value="Test" onclick="myFunction(4)" /></p>
+        </form>
+        <p id="valida4"></p>
+        <p id="extrat4"></p>
+    </div>
 </body>
 
 </html>
