@@ -1,5 +1,8 @@
 
+
 function regex() {
+    document.getElementById("extrat").style.display = "none";
+    document.getElementById("compri").style.display = "none";
     var string = document.getElementById("str").value;
     var regex = document.getElementById("reg").value;
     var slash = "/";
@@ -18,15 +21,32 @@ function regex() {
     }
 
     var regexflag = eval(slash.concat(regex).concat(flag));
-    //  console.log(regexflag);
+    console.log(regexflag);
     var resultadoV = regexflag.test(string);
     var resultadoE = string.match(regexflag);
-    var resultadoL = string.match(regexflag).length;
-    document.getElementById("valida").innerHTML = resultadoV;
-    document.getElementById("extrat").innerHTML = resultadoE;
-    document.getElementById("compri").innerHTML = resultadoL;
+
+    document.getElementById("valida").innerHTML = "Match: <b>" + resultadoV + "</b>";
+    if (resultadoV) {
+        document.getElementById("extrat").style.display = "block";
+        document.getElementById("compri").style.display = "block";
+        document.getElementById("extrat").innerHTML = "String(s): " + resultadoE;
+        var resultadoL = string.match(regexflag).length;
+        document.getElementById("compri").innerHTML = "# " + resultadoL + " result(s)";
+    }
 }
 
+
+// Simulações de Replace
+function replace() {
+    var testStr = document.getElementById("str1").value;
+    console.log(testStr);
+    var testRegex = eval(document.getElementById("reg1").value);
+    var replaceText = document.getElementById("rep1").value;
+    var resultadoV = testRegex.test(testStr);
+    var result = testStr.replace(testRegex, replaceText);
+    document.getElementById("valida1").innerHTML = "Match: <b>" + resultadoV + "</b>";
+    document.getElementById("replace1").innerHTML = "Result: <u> " + result + "</u>";
+}
 
 // Testes Gerais
 
@@ -35,9 +55,7 @@ function myFunction(i) {
     var testRegex = eval(document.getElementById("reg" + i).value);
     var replaceText = document.getElementById("rep" + i).value;
     var resultadoV = testRegex.test(testStr);
-    var resultadoE = testStr.match(testRegex);
     var result = testStr.replace(testRegex, replaceText);
-    document.getElementById("valida" + i).innerHTML = resultadoV;
-    document.getElementById("extrat" + i).innerHTML = resultadoE;
-    document.getElementById("replace" + i).innerHTML = result;
+    document.getElementById("valida" + i).innerHTML = "Match: <b>" + resultadoV + "</b>";
+    document.getElementById("replace" + i).innerHTML = "Result: <u> " + result + "</u>";
 }

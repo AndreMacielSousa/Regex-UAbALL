@@ -12,28 +12,53 @@
 <style>
     body {
         font-family: monospace;
-        background-color: linen;
+        background-color: rgba(0, 0, 0, 0.089);
     }
 
     h2 {
-        font-size: xx-large;
+        font-size: 2em;
         color: maroon;
     }
 
-    .regex {
+    h3 {
+        font-size: 1.5em;
         margin-left: 60px;
-        font-size: larger;
+    }
+
+    .regex {
+        position: relative;
+        margin-left: 60px;
+        font-size: 1.2em;
+    }
+
+    h4 {
+        font-size: 1.2em;
+        color: maroon;
     }
 
     #str,
     #reg {
 
-        font-size: larger;
+        font-size: 1.2em;
     }
 
-    .testes {
-        margin-left: 10px;
-        font-size: smaller;
+    .form-group {
+        padding-top: 2em;
+    }
+
+    .testes,
+    .replace {
+        vertical-align: top;
+        width: 400px;
+        display: inline-block;
+        margin-left: 20px;
+        font-size: 1.1em;
+    }
+
+    .button {
+        font-size: 1em;
+        color: white;
+        background-color: #008cff;
     }
 </style>
 
@@ -44,49 +69,80 @@
 <body>
     <div class="regex">
         <h2>TESTES REGEX</h2>
+
         <form>
             <p>String</p>
-            <textarea id="str" rows="5" cols="64">James has a pet CAT, bird and dog.</textarea>
-            <p>Regex :<b> &sol; </b><input type="text" id="reg" value="dog|cat|bird|fish" size="50" /><b> &sol;</b></p>
+            <textarea id="str" rows="5" cols="72">4000 Porto PT</textarea>
+            <p>Regex :<b> &sol; </b><input type="text" id="reg" value="[A-Z][a-z]*[ ][A-Z][A-Z]" size="50" /><b>
+                    &sol;</b></p>
             <p>Flags:
                 <input type="checkbox" id="ignore" value="i"> ignore case (/i)
                 <input type="checkbox" id="global" value="g"> global (/g)
                 <input type="checkbox" id="multi" value="m"> multiline (/m)
 
             </p>
-            <p><input type="button" value="Test" onclick="regex()" /></p>
+            <p><input class="button" type="button" value="Test" onclick="regex()" /></p>
         </form>
+
         <p id="valida"></p>
         <p id="extrat"></p>
         <p id="compri"></p>
     </div>
 
-    <!-- Testes Gerais-->
-    <div class="testes">
+    <hr />
+    <h3>Replacement Methods</h3>
+
+    <div class="replace">
+
+        <h4>Examples</h4>
         <hr />
-        <hr />
-        <h4>Exemplo Replace 1</h4>
-        <form>
-            <p>String a testar : <input type="text" id="str1" value="The sky is silver." size="50" /></p>
-            <p>Regex : <input type="text" id="reg1" value="/silver/" size="50" /></p>
-            <p>Replace:<input type="text" id="rep1" value="blue" size="50" /></p>
-            </p>
-            <p><input type="button" value="Test" onclick="myFunction(1)" /></p>
+        <form NAME="myform" ACTION="" METHOD="GET">
+            <div class="form-group">
+                <label for="str1">String:</label>
+                <select id="str1">
+                    <option value="The sky is silver.">The sky is silver.</option>
+                    <option value="one two three">one two three</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="reg1">Regex:</label>
+                <select id="reg1">
+                    <option value="/silver/">/silver/</option>
+                    <option value="/(\w+)\s(\w+)\s(\w+)/">/(\w+)\s(\w+)\s(\w+)/</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="rep1">Replace:</label>
+                <select id="rep1">
+                    <option value="blue">blue</option>
+                    <option value="$3 $2 $1">$3 $2 $1</option>
+                </select>
+            </div>
+            <div class="form-group" id="button">
+                <input class="button" TYPE="button" NAME="button" Value="Test" onClick="replace(this.form)">
+            </div>
         </form>
+
         <p id="valida1"></p>
-        <p id="extrat1"></p>
         <p id="replace1"></p>
 
-        <h4>Exemplo Replace 2</h4>
+    </div>
+
+    <div class="testes">
+
+
+        <h4>Try Youself</h4>
+        <hr />
         <form>
             <p>String a testar : <input type="text" id="str2" value="one two three" size="50" /></p>
             <p>Regex : <input type="text" id="reg2" value="/(\w+)\s(\w+)\s(\w+)/" size="50" /></p>
             <p>Replace:<input type="text" id="rep2" value="$3 $2 $1" size="50" /></p>
             </p>
-            <p><input type="button" value="Test" onclick="myFunction(2)" /></p>
+            <p><input class="button" type="button" value="Test" onclick="myFunction(2)" /></p>
         </form>
         <p id="valida2"></p>
-        <p id="extrat2"></p>
         <p id="replace2"></p>
 
     </div>
