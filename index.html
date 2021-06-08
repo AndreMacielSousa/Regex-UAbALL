@@ -9,6 +9,8 @@
 
 <!-- CSS test to move to CSS External  -->
 
+<link href="https://andremaciel.pt/UAb/UAbALL/style.css" type="text/css" rel="stylesheet">
+
 <style>
     body {
         font-family: monospace;
@@ -46,6 +48,10 @@
         padding-top: 2em;
     }
 
+    .form-group1 {
+        padding-bottom: 1em;
+    }
+
     .testes,
     .replace {
         vertical-align: top;
@@ -53,12 +59,48 @@
         display: inline-block;
         margin-left: 20px;
         font-size: 1.1em;
+        margin-bottom: 2em;
     }
 
     .button {
         font-size: 1em;
         color: white;
         background-color: #008cff;
+    }
+
+    select {
+        width: 350px;
+        height: 54px;
+    }
+
+    .nav {
+        font-size: 1.5em;
+    }
+
+    .intro {
+        font-size: 1em;
+        text-align: justify;
+        margin-right: 30px;
+        margin-left: 30px;
+    }
+
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #333333;
+        font-size: 0.9em;
+        color: #ffffff;
+        text-align: center;
+        margin: 0px;
+    }
+
+    .footer small {
+        color: #ff0000;
+    }
+    .metodos{
+        background-color: rgba(0, 0, 0, 0.158);
     }
 </style>
 
@@ -67,85 +109,170 @@
 </head>
 
 <body>
-    <div class="regex">
-        <h2>TESTES REGEX</h2>
 
-        <form>
-            <p>String</p>
-            <textarea id="str" rows="5" cols="72">4000 Porto PT</textarea>
-            <p>Regex :<b> &sol; </b><input type="text" id="reg" value="[A-Z][a-z]*[ ][A-Z][A-Z]" size="50" /><b>
-                    &sol;</b></p>
-            <p>Flags:
-                <input type="checkbox" id="ignore" value="i"> ignore case (/i)
-                <input type="checkbox" id="global" value="g"> global (/g)
-                <input type="checkbox" id="multi" value="m"> multiline (/m)
+    <!--Simulação Navegação para prototipo, com base no Projecto Incial-->
+    <main>
+        <nav class="nav">
+            <ul id="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">DFA</a></li>
+                <li><a href="#">NFA</a></li>
+                <li><a href="#">NFA-ε</a></li>
+                <li><a href="#">PDA</a></li>
+                <li><a href="#">TURING</a></li>
+                <li><a href="#">REGEX</a></li>
+                <li><a href="#">GRAMMAR</a></li>
+                <li class="esp"><a href="#"></a></li>
+                <li class="eng"><a href="#"></a></li>
+                <li class="prt"><a href="#"></a></li>
+                <li class="sos"><a href="#">help</a></li>
+            </ul>
+        </nav>
 
+        <article class="intro">
+            <p>As linguagens regulares constituem a classe de linguagens com menor poder de representação, sendo
+                possível
+                desenvolver algoritmos de reconhecimento, existindo várias aplicações, como a analise léxica, sistemas
+                de
+                animação, hipertextos e hipermédia&nbsp;(Menezes, 2000). As linguagens regulares podem ser presentadas
+                por
+                um autómato finito e por uma Expressão Regular (REGEX).</p>
+            <p><strong>REGEX – Expressões Regulares</strong> – uma forma sequencial de especificar uma linguagem
+                regular,
+                através de um padrão de <em>Strings </em>que descreve o mesmo que pode ser descrito por um autómato
+                finito.&nbsp; Um exemplo, em notação UNIX de uma REGEX “ [A-Z][a-z]*[ ][A-Z][A-Z]” representa uma
+                palavra
+                iniciada com maiúscula, seguida de espaço e duas maiúsculas, nesta seria aceite a sequência “Porto PT”.
             </p>
-            <p><input class="button" type="button" value="Test" onclick="regex()" /></p>
-        </form>
+            <hr>
+        </article>
 
-        <p id="valida"></p>
-        <p id="extrat"></p>
-        <p id="compri"></p>
-    </div>
+        <article class="simulador">
+            <!--REGEX-->
+            <div class="regex">
+                <h2>Simulation REGEX</h2>
 
-    <hr />
-    <h3>Replacement Methods</h3>
+                <form NAME="myform" ACTION="" METHOD="GET">
+                    <div class="form-group1">
+                        <label for="str">String:</label><br>
+                        <textarea id="str" rows="5" cols="74">4000 Porto PT</textarea>
+                    </div>
 
-    <div class="replace">
+                    <div class="form-group1">
+                        <label for="reg">Regex:&sol;</label>
+                        <input type="text" id="reg" value="[A-Z][a-z]*[ ][A-Z][A-Z]" size="53" /> &sol;
+                    </div>
+                    <div class="form-group1">
 
-        <h4>Examples</h4>
+                        <p>Flags:
+                            <input type="checkbox" id="ignore" value="i"> ignore case (/i)
+                            <input type="checkbox" id="global" value="g"> global (/g)
+                            <input type="checkbox" id="multi" value="m"> multiline (/m)
+
+                        </p>
+
+                    </div>
+                    <div class="form-group1" id="button">
+                        <input class="button" TYPE="button" NAME="button" Value="Test" onClick="regex(this.form)">
+                    </div>
+                </form>
+
+                <p id="valida"></p>
+                <p id="extrat"></p>
+                <p id="compri"></p>
+            </div>
+        </article>
         <hr />
-        <form NAME="myform" ACTION="" METHOD="GET">
-            <div class="form-group">
-                <label for="str1">String:</label>
-                <select id="str1">
-                    <option value="The sky is silver.">The sky is silver.</option>
-                    <option value="one two three">one two three</option>
-                </select>
+        <article class="metodos">
+    
+            <hr>
+            <h3>Replacement Methods</h3>
+
+            <div class="replace">
+
+                <h4>Examples</h4>
+                <hr />
+                <form NAME="myform" ACTION="" METHOD="GET">
+                    <div class="form-group">
+                        <label for="str1">String:</label><br>
+                        <select id="str1" size="2" multiple required>
+
+                            <option value="The sky is silver." selected>The sky is silver.</option>
+                            <option value="one two three">one two three</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg1">Regex:</label><br>
+                        <select id="reg1" size="2" multiple required>
+
+                            <option value="/silver/" selected>/silver/</option>
+                            <option value="/(\w+)\s(\w+)\s(\w+)/">/(\w+)\s(\w+)\s(\w+)/</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rep1">Replace:</label><br>
+                        <select id="rep1" size="2" multiple required>
+
+                            <option value="blue" selected>blue</option>
+                            <option value="$3 $2 $1">$3 $2 $1</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="button">
+                        <input class="button" TYPE="button" NAME="button" Value="Test" onClick="replace(this.form)">
+                    </div>
+                </form>
+
+                <p id="valida1"></p>
+                <p id="replace1"></p>
+
             </div>
 
-            <div class="form-group">
-                <label for="reg1">Regex:</label>
-                <select id="reg1">
-                    <option value="/silver/">/silver/</option>
-                    <option value="/(\w+)\s(\w+)\s(\w+)/">/(\w+)\s(\w+)\s(\w+)/</option>
-                </select>
+            <div class="testes">
+
+
+                <h4>Try Youself</h4>
+                <hr />
+                <form NAME="myform" ACTION="" METHOD="GET">
+
+                    <div class="form-group">
+                        <label for="str2">String:</label><br>
+                        <textarea id="str2" rows="3" cols="50">one two three</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg2">Regex:</label><br>
+                        <textarea id="reg2" rows="3" cols="50">/(\w+)\s(\w+)\s(\w+)/</textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rep2">Replace:</label><br>
+                        <textarea id="rep2" rows="3" cols="50">$3 $2 $1</textarea>
+
+                    </div>
+                    <div class="form-group" id="button">
+                        <input class="button" TYPE="button" NAME="button" Value="Test"
+                            onClick="myFunction(2,this.form)">
+                    </div>
+
+                    <p id="valida2"></p>
+                    <p id="replace2"></p>
+
             </div>
+        </article>
+    </main>
 
-            <div class="form-group">
-                <label for="rep1">Replace:</label>
-                <select id="rep1">
-                    <option value="blue">blue</option>
-                    <option value="$3 $2 $1">$3 $2 $1</option>
-                </select>
-            </div>
-            <div class="form-group" id="button">
-                <input class="button" TYPE="button" NAME="button" Value="Test" onClick="replace(this.form)">
-            </div>
-        </form>
+    <!--Footer projecto inicial-->
 
-        <p id="valida1"></p>
-        <p id="replace1"></p>
+    <footer>
 
-    </div>
+        <p class="footer">Projeto de Engenharia Informática 2020 de <a href="https://www.andremaciel.pt"
+                target="_blank">André Maciel Sousa</a>
+            <small>V.1.1</small>
+        </p>
 
-    <div class="testes">
-
-
-        <h4>Try Youself</h4>
-        <hr />
-        <form>
-            <p>String a testar : <input type="text" id="str2" value="one two three" size="50" /></p>
-            <p>Regex : <input type="text" id="reg2" value="/(\w+)\s(\w+)\s(\w+)/" size="50" /></p>
-            <p>Replace:<input type="text" id="rep2" value="$3 $2 $1" size="50" /></p>
-            </p>
-            <p><input class="button" type="button" value="Test" onclick="myFunction(2)" /></p>
-        </form>
-        <p id="valida2"></p>
-        <p id="replace2"></p>
-
-    </div>
+    </footer>
 </body>
 
 </html>

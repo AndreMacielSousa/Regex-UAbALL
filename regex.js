@@ -21,7 +21,7 @@ function regex() {
     }
 
     var regexflag = eval(slash.concat(regex).concat(flag));
-    console.log(regexflag);
+   // console.log(regexflag);
     var resultadoV = regexflag.test(string);
     var resultadoE = string.match(regexflag);
 
@@ -39,7 +39,7 @@ function regex() {
 // Simulações de Replace
 function replace() {
     var testStr = document.getElementById("str1").value;
-    console.log(testStr);
+    //console.log(testStr);
     var testRegex = eval(document.getElementById("reg1").value);
     var replaceText = document.getElementById("rep1").value;
     var resultadoV = testRegex.test(testStr);
